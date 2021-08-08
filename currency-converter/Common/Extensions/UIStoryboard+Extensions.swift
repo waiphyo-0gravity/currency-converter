@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIStoryboard {
-    @nonobjc class var main: UIStoryboard {
-        return UIStoryboard(name: "Main", bundle: nil)
+    @nonobjc class var currency: UIStoryboard {
+        return UIStoryboard(name: "Currency", bundle: nil)
     }
 }

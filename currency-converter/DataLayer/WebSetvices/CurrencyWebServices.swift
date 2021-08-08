@@ -10,7 +10,12 @@ import Foundation
 class CurrencyWebService: CurrencyWebServiceInputProtocol {
     weak var interactor: CurrencyWebServiceOutputProtocol?
     
+    //  MARK: Private variables.
+    private var session: URLSessionTask?
+    
     func callLiveCurrencies() {
+        session?.cancel()
+        
         guard var urlComponents = EndPoints.Currency.live.url else { return }
         
         urlComponents.queryItems = [
@@ -19,7 +24,7 @@ class CurrencyWebService: CurrencyWebServiceInputProtocol {
         
         guard let url = urlComponents.url else { return }
         
-        let session = URLSession.shared.dataTask(with: url) {[unowned self] data, response, error in
+        session = URLSession.shared.dataTask(with: url) {[unowned self] data, response, error in
             let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 0
             
             DispatchQueue.main.async {
@@ -37,6 +42,6 @@ class CurrencyWebService: CurrencyWebServiceInputProtocol {
             }
         }
         
-        session.resume()
+        session?.resume()
     }
 }

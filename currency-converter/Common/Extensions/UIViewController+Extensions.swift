@@ -9,6 +9,6 @@ import UIKit
 
 extension UIViewController {
     @nonobjc class var CurrencyViewController: UIViewController? {
-        return UIStoryboard.main.instantiateInitialViewController()
+        return UIStoryboard.currency.instantiateInitialViewController()
     }
 }

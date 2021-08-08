@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="168" id="KGk-i7-Jjw" customClass="CurrencyTableViewCell" customModule="currency_converter" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="427" height="168"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="427" height="168"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oV5-rD-jeb">
+                        <rect key="frame" x="16" y="8" width="395" height="152"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qcH-qb-97U" customClass="CurrencySymbolView" customModule="currency_converter" customModuleProvider="target">
+                                <rect key="frame" x="12" y="12" width="42" height="42"/>
+                                <color key="backgroundColor" name="primary"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="PBC-CT-svK"/>
+                                    <constraint firstAttribute="width" secondItem="qcH-qb-97U" secondAttribute="height" multiplier="1:1" id="wSN-Ww-ceb"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f1b-2E-Oxw">
+                                <rect key="frame" x="66" y="12" width="44.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" name="c300"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="99f-fM-9hY">
+                                <rect key="frame" x="66" y="40.5" width="317" height="99.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" name="c100"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="s20"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="99f-fM-9hY" secondAttribute="trailing" constant="12" id="8T1-Em-bs8"/>
+                            <constraint firstItem="f1b-2E-Oxw" firstAttribute="leading" secondItem="qcH-qb-97U" secondAttribute="trailing" constant="12" id="Cz2-zU-1jb"/>
+                            <constraint firstItem="qcH-qb-97U" firstAttribute="top" secondItem="oV5-rD-jeb" secondAttribute="top" constant="12" id="Keu-fV-YU5"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="f1b-2E-Oxw" secondAttribute="trailing" constant="12" id="YW3-NV-MDj"/>
+                            <constraint firstAttribute="bottom" secondItem="99f-fM-9hY" secondAttribute="bottom" constant="12" id="bV5-rH-h3e"/>
+                            <constraint firstItem="99f-fM-9hY" firstAttribute="top" secondItem="f1b-2E-Oxw" secondAttribute="bottom" constant="8" id="cR5-HE-mn4"/>
+                            <constraint firstItem="qcH-qb-97U" firstAttribute="leading" secondItem="oV5-rD-jeb" secondAttribute="leading" constant="12" id="hYq-fb-imC"/>
+                            <constraint firstItem="99f-fM-9hY" firstAttribute="leading" secondItem="f1b-2E-Oxw" secondAttribute="leading" id="oHL-EU-0LK"/>
+                            <constraint firstItem="f1b-2E-Oxw" firstAttribute="top" secondItem="oV5-rD-jeb" secondAttribute="top" constant="12" id="pFc-wt-AeF"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="oV5-rD-jeb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="BfB-aW-VW6"/>
+                    <constraint firstAttribute="bottom" secondItem="oV5-rD-jeb" secondAttribute="bottom" constant="8" id="TQF-S5-vlg"/>
+                    <constraint firstItem="oV5-rD-jeb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="dZ5-2f-pAf"/>
+                    <constraint firstAttribute="trailing" secondItem="oV5-rD-jeb" secondAttribute="trailing" constant="16" id="eqa-xV-V70"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="containerView" destination="oV5-rD-jeb" id="eXf-wx-4Kr"/>
+                <outlet property="currencyNameLbl" destination="f1b-2E-Oxw" id="flN-C6-gy4"/>
+                <outlet property="exchangeRateLbl" destination="99f-fM-9hY" id="uSm-jT-yHt"/>
+                <outlet property="symbolView" destination="qcH-qb-97U" id="Gn3-l9-ZTx"/>
+            </connections>
+            <point key="canvasLocation" x="77.536231884057983" y="92.410714285714278"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="c100">
+            <color red="0.36100000143051147" green="0.40400001406669617" blue="0.45100000500679016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="c300">
+            <color red="0.21199999749660492" green="0.24699999392032623" blue="0.30199998617172241" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primary">
+            <color red="1" green="0.58399999141693115" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="s20">
+            <color red="0.94900000095367432" green="0.95300000905990601" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

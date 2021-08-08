@@ -2,6 +2,7 @@
 # platform :ios, '9.0'
 def shared_pods
   pod 'RealmSwift'
+  pod 'lottie-ios'
 end
 
 target 'currency-converter' do
@@ -10,4 +11,9 @@ target 'currency-converter' do
   
   # Pods for currency-converter
   shared_pods
+
+  target 'currency-converterTests' do
+    inherit! :search_paths
+  end
 end
+
