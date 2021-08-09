@@ -4,6 +4,9 @@
   <a href="http://developer.apple.com/">
     <img src="https://img.shields.io/badge/Swift-v.5-orange" alt="Swift: v.5">
   </a>
+  <a href="http://developer.apple.com/">
+    <img src="https://img.shields.io/badge/XCTest-orange" alt="XCTest">
+  </a>
   <a href="https://github.com/realm/realm-cocoa">
     <img src="https://img.shields.io/badge/Realm-v.10.10-blue" alt="Realm: v.10.10">
   </a>
