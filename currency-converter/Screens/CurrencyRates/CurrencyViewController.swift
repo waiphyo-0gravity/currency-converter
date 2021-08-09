@@ -66,7 +66,7 @@ extension CurrencyViewController {
         tableView.tableFooterView = UIView()
         tableView.separatorColor = .clear
         tableView.allowsSelection = false
-        tableView.contentInset = .init(top: 0, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = .init(top: 0, left: 0, bottom: view.safeAreaInsets.bottom, right: 0)
         tableView.estimatedSectionHeaderHeight = 24
         tableView.sectionHeaderHeight = UITableView.automaticDimension
         tableView.dataSource = self

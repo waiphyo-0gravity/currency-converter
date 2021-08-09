@@ -26,7 +26,7 @@ class CurrencyWebService: CurrencyWebServiceInputProtocol {
         
         session = APIHelper.session.dataTask(with: url) {[unowned self] data, response, error in
             let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 0
-            print(url)
+            
             DispatchQueue.main.async {
                 guard let data = data else {
                     interactor?.gotLiveCurrencies(success: false, data: nil, error: error, status: statusCode)

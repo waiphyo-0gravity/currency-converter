@@ -45,7 +45,6 @@ class CurrencyInteractorTests: XCTestCase {
     func testHttpErrorHandling() {
         webServiceMock.apiCallState = .fail(error: .httperror(status: 500, msg: nil))
         interactor?.getLiveCurrencies()
-        print(presenterMock.error, "ggwp")
         XCTAssertTrue(presenterMock.error == .httperror(status: 500, msg: nil))
     }
     

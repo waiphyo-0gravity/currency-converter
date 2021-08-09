@@ -134,7 +134,7 @@ extension CurrencyInteractor {
 extension CurrencyInteractor: CurrencyWebServiceOutputProtocol {
     func gotLiveCurrencies(success: Bool, data: CurrencyModel?, error: Error?, status: Int) {
         presenter?.finishedLiveCurrenciesCall()
-        print(data, status)
+        
         if success,
            let quotes = data?.quotes,
            let source = data?.source {
