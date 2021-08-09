@@ -5,7 +5,7 @@
 //  Created by Wai Phyo on 8/6/21.
 //
 
-import Foundation
+import UIKit
 
 class CurrencyPresenter: CurrencyPresenterProtocol {
     weak var view: CurrencyViewProtocol?
@@ -23,6 +23,8 @@ class CurrencyPresenter: CurrencyPresenterProtocol {
     //  MARK: Private variables
     private var currencyRates = [String: Double]()
     private var timer: Timer?
+    
+    //  MARK: 30min for rates refreshing api call.
     private var timerInterval: TimeInterval = 1800
     
     deinit {
@@ -79,6 +81,14 @@ class CurrencyPresenter: CurrencyPresenterProtocol {
         refreshAllCurrencyRates(isAnimate: false)
     }
     
+    func showError(view: UIViewController, error: CurrencyError) {
+        let isSavedLocally = interactor?.areRatesSavedLocally == true
+        
+        router?.showErrorView(view: view, for: error, isCancelBtnInclude: isSavedLocally) {[unowned self] in
+            interactor?.getLiveCurrencies()
+        }
+    }
+    
     //  MARK: Selectors.
     @objc func handleScheduledTimer() {
         interactor?.getLiveCurrencies()
@@ -120,10 +130,6 @@ extension CurrencyPresenter {
 //  MARK: - INTERACTOR -> PRESENTER
 extension CurrencyPresenter: CurrencyInteractorOutputProtocol {
     func changedCurrencyRates(with data: [String: Double], originalData: [CurrencyLocalModel], deletions: [Int], insertions: [Int], modifications: [Int]) {
-        defer {
-            restartTimer()
-        }
-        
         currencyRates = data
         displayCurrencies = originalData.map { $0.code }
         view?.updateCurrencyList(deletions: deletions, insertions: insertions, modifications: modifications)
@@ -135,5 +141,10 @@ extension CurrencyPresenter: CurrencyInteractorOutputProtocol {
     
     func finishedLiveCurrenciesCall() {
         view?.endRefreshControl()
+        restartTimer()
+    }
+    
+    func handleErrors(error: CurrencyError) {
+        view?.gotError(error: error)
     }
 }

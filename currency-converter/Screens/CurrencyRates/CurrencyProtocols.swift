@@ -15,6 +15,7 @@ protocol CurrencyViewProtocol: AnyObject {
     func endRefreshControl()
     func updateSourceCurrencyUIs(isAnimate: Bool)
     func changeLoadingState(isLoading: Bool, isAnimate: Bool)
+    func gotError(error: CurrencyError)
 }
 
 protocol CurrencyPresenterProtocol {
@@ -31,6 +32,7 @@ protocol CurrencyPresenterProtocol {
     func getSourceCurrencyDisplayData() -> (currencyCode: String, currencyName: String, currencySymbol: String)
     func changeSourceCurrency(with code: String)
     func changeSourceValue(to value: Double)
+    func showError(view: UIViewController, error: CurrencyError)
 }
 
 protocol CurrencyInteractorInputProtocol {
@@ -46,10 +48,12 @@ protocol CurrencyInteractorInputProtocol {
 protocol CurrencyInteractorOutputProtocol: AnyObject {
     func changedCurrencyRates(with data: [String: Double], originalData: [CurrencyLocalModel], deletions: [Int], insertions: [Int], modifications: [Int])
     func finishedLiveCurrenciesCall()
+    func handleErrors(error: CurrencyError)
 }
 
 protocol CurrencyRouterProtocol {
     static func createModule() -> UIViewController?
+    func showErrorView(view: UIViewController, for error: CurrencyError, isCancelBtnInclude: Bool, handleRetry: (()->Void)?)
 }
 
 protocol CurrencyLocalStorageProtocol {

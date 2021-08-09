@@ -36,7 +36,7 @@ struct MockData {
         timestamp: nil,
         source: nil,
         quotes: nil,
-        error: .init(code: 101, type: "", info: "")
+        error: nil
     )
     
     var localRatesData: [CurrencyLocalModel] = [

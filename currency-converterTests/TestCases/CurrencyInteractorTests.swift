@@ -27,8 +27,32 @@ class CurrencyInteractorTests: XCTestCase {
     
     func testGettingLiveCurrencyRate() {
         interactor?.getLiveCurrencies()
-        print(<#T##items: Any...##Any#>)
         XCTAssertTrue(interactor?.areRatesSavedLocally ?? false)
+    }
+    
+    func testNoInternetErrorHandling() {
+        webServiceMock.apiCallState = .fail(error: .nointernet)
+        interactor?.getLiveCurrencies()
+        XCTAssertTrue(presenterMock.error == .nointernet)
+    }
+    
+    func testNoTimeoutErrorHandling() {
+        webServiceMock.apiCallState = .fail(error: .timeout)
+        interactor?.getLiveCurrencies()
+        XCTAssertTrue(presenterMock.error == .timeout)
+    }
+    
+    func testHttpErrorHandling() {
+        webServiceMock.apiCallState = .fail(error: .httperror(status: 500, msg: nil))
+        interactor?.getLiveCurrencies()
+        print(presenterMock.error, "ggwp")
+        XCTAssertTrue(presenterMock.error == .httperror(status: 500, msg: nil))
+    }
+    
+    func testUnknownErrorHandle() {
+        webServiceMock.apiCallState = .fail(error: .unknown)
+        interactor?.getLiveCurrencies()
+        XCTAssertTrue(presenterMock.error == .unknown)
     }
 }
 

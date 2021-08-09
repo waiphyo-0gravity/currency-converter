@@ -18,6 +18,7 @@ class CurrencyInteractorOutputMock: CurrencyInteractorOutputProtocol {
     private(set) var modifications = [Int]()
     
     private(set) var isFinishedLiveCurrenciesCall = false
+    private(set) var error: CurrencyError?
     
     func changedCurrencyRates(with data: [String : Double], originalData: [CurrencyLocalModel], deletions: [Int], insertions: [Int], modifications: [Int]) {
         self.data = data
@@ -29,5 +30,9 @@ class CurrencyInteractorOutputMock: CurrencyInteractorOutputProtocol {
     
     func finishedLiveCurrenciesCall() {
         isFinishedLiveCurrenciesCall = true
+    }
+    
+    func handleErrors(error: CurrencyError) {
+        self.error = error
     }
 }

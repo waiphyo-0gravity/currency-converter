@@ -8,6 +8,24 @@
 import UIKit
 
 class CurrencyRouter: CurrencyRouterProtocol {
+    func showErrorView(view: UIViewController, for error: CurrencyError, isCancelBtnInclude: Bool, handleRetry: (()->Void)?) {
+        let displayErrData = error.displayData
+        
+        let alertVC = UIAlertController(title: displayErrData.title, message: displayErrData.message, preferredStyle: .alert)
+        
+        let retryAction = UIAlertAction(title: "Retry", style: .default) {_ in
+            handleRetry?()
+        }
+        alertVC.addAction(retryAction)
+        
+        if isCancelBtnInclude {
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            alertVC.addAction(cancelAction)
+        }
+        
+        view.present(alertVC, animated: true)
+    }
+    
     static func createModule() -> UIViewController? {
         guard let view = UIViewController.CurrencyViewController as? CurrencyViewController else { return nil }
         

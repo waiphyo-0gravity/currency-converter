@@ -15,6 +15,7 @@ class CurrencyViewMock: CurrencyViewProtocol {
     private(set) var updateIndexs: (deletions: [Int], insertions: [Int], modifications: [Int]) = ([], [] , [])
     private(set) var isSourceCurrencyUpdate = false
     private(set) var loadingState = false
+    private(set) var error: CurrencyError?
     
     func updateCurrencyList(deletions: [Int], insertions: [Int], modifications: [Int]) {
         updateIndexs = (deletions, insertions, modifications)
@@ -30,5 +31,9 @@ class CurrencyViewMock: CurrencyViewProtocol {
     
     func changeLoadingState(isLoading: Bool, isAnimate: Bool) {
         loadingState = isLoading
+    }
+    
+    func gotError(error: CurrencyError) {
+        self.error = error
     }
 }

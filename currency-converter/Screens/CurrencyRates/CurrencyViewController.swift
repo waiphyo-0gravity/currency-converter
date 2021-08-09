@@ -157,9 +157,9 @@ extension CurrencyViewController: CurrencyViewProtocol {
     }
     
     func endRefreshControl() {
-        guard refreshControl.isRefreshing else { return }
-        
-        refreshControl.endRefreshing()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {[unowned self] in
+            refreshControl.endRefreshing()
+        }
     }
     
     func changeLoadingState(isLoading: Bool, isAnimate: Bool) {
@@ -168,6 +168,10 @@ extension CurrencyViewController: CurrencyViewProtocol {
         } else {
             loadingView.stopAnimation(isAnimate: isAnimate)
         }
+    }
+    
+    func gotError(error: CurrencyError) {
+        presenter?.showError(view: self, error: error)
     }
 }
 
